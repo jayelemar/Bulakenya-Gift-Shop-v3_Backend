@@ -1,16 +1,24 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const connectDB = require('./config/connectDB');
+const mongoose = require("mongoose");
+const Product = require("./model/productModel");
+const productRoutes = require("./routes/productRoute");
+
+
 const app = express();
 
 connectDB();
 
-app.use(express.json)
+app.use(express.json())
+app.use(express.urlencoded({ extended:false }));
+app.use(productRoutes);
+
+
+
 app.get('/', (req, res) => {
     res.send("Home page");
 })
-
-const Product = require("./model/productModel")
 
 const PORT = process.env.PORT || 5000;
 
