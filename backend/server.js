@@ -12,7 +12,7 @@ connectDB();
 
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }));
-app.use(productRoutes);
+app.use("/api/products", productRoutes);
 
 
 
